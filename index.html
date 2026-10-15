@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="دليل المهام الوظيفية لمحاسب التكاليف مع شرح مبسط وأمثلة عملية.">
+<title>دليل محاسب التكاليف | المهام والأمثلة</title>
+<style>
+:root {
+  --primary:#155eef;
+  --dark:#172b4d;
+  --muted:#667085;
+  --bg:#f5f7fb;
+  --card:#fff;
+  --border:#e4e7ec;
+  --green:#067647;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;background:var(--bg);color:#243047;
+  font-family:Tahoma,Arial,sans-serif;line-height:1.9
+}
+header{
+  background:linear-gradient(135deg,#102a56,#155eef);
+  color:white;padding:38px 20px 32px;text-align:center
+}
+header h1{margin:0 0 10px;font-size:clamp(25px,4vw,38px)}
+header p{max-width:760px;margin:0 auto;color:#e1eaff}
+.container{max-width:1100px;margin:auto;padding:22px 16px}
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-top:-5px;margin-bottom:22px
+}
+.stat,.panel,.task,.section-title{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:14px
+}
+.stat{text-align:center;padding:15px}
+.stat strong{display:block;font-size:25px;color:var(--primary)}
+.stat span{color:var(--muted);font-size:13px}
+.tools{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px
+}
+input,select,button{
+  font:inherit;border-radius:9px;padding:11px 13px
+}
+input,select{
+  background:white;border:1px solid #d0d5dd;color:var(--dark)
+}
+#search{flex:1;min-width:220px}
+button{cursor:pointer;border:0;font-weight:bold}
+.primary{background:var(--primary);color:white}
+.secondary{background:white;color:var(--dark);border:1px solid var(--border)}
+.layout{display:grid;grid-template-columns:255px minmax(0,1fr);gap:20px}
+.sidebar{
+  align-self:start;position:sticky;top:15px;padding:16px
+}
+.sidebar h2{font-size:17px;margin:0 0 10px}
+.sidebar a{
+  display:block;text-decoration:none;color:#344054;
+  padding:8px 10px;border-radius:8px;font-size:14px
+}
+.sidebar a:hover{background:#eff4ff;color:var(--primary)}
+.section{margin-bottom:26px}
+.section-title{padding:17px 19px;margin-bottom:12px}
+.section-title h2{font-size:21px;margin:0 0 5px;color:var(--dark)}
+.section-title p{margin:0;color:var(--muted);font-size:14px}
+.task{padding:17px 18px;margin-bottom:12px}
+.task h3{font-size:17px;margin:0 0 8px;color:#173b78}
+.task p{margin:7px 0}
+.task .example{
+  background:#f0f7ff;border-right:4px solid var(--primary);
+  border-radius:7px;padding:10px 13px;margin-top:12px
+}
+.task .example strong{color:#174ea6}
+.task .formula{font-weight:bold;color:var(--green)}
+.number{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#eaf1ff;color:var(--primary);border-radius:7px;
+  min-width:30px;height:30px;margin-left:7px;font-size:14px
+}
+.empty{display:none;padding:25px;text-align:center;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:13px}
+.note{font-size:13px;color:var(--muted)}
+@media(max-width:760px){
+ .layout{grid-template-columns:1fr}
+ .sidebar{position:static}
+ .sidebar nav{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+ .stats{grid-template-columns:1fr 1fr}
+ .stats .stat:last-child{grid-column:1/-1}
+ header{padding-top:28px}
+}
+@media print{
+ body{background:white;color:#000;font-size:11pt}
+ header{background:white!important;color:black;padding:10px}
+ header p{color:black}
+ .tools,.sidebar,footer,.no-print{display:none!important}
+ .container{max-width:none;padding:0}
+ .layout{display:block}
+ .task,.section-title{break-inside:avoid;box-shadow:none}
+ .task{margin-bottom:10px}
+ .task .example{background:white}
+ .section{break-before:auto}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>دليل المهام الوظيفية لمحاسب التكاليف</h1>
+  <p>مرجع عملي لفهم مسؤوليات محاسب التكاليف داخل المصنع، مع شرح مبسط وأمثلة بالأرقام.</p>
+</header>
+
+<main class="container">
+  <div class="stats">
+    <div class="stat"><strong>41</strong><span>مهمة وظيفية</span></div>
+    <div class="stat"><strong>5</strong><span>مجموعات رئيسية</span></div>
+    <div class="stat"><strong>100%</strong><span>شرح عربي مبسط</span></div>
+  </div>
+
+  <div class="tools">
+    <input id="search" type="search" placeholder="ابحث عن مهمة، مثل: المخزون أو الانحرافات..." aria-label="البحث في المهام">
+    <select id="category" aria-label="اختر القسم">
+      <option value="all">كل الأقسام</option>
+      <option value="cost">تكلفة الإنتاج</option>
+      <option value="stock">المخازن والمخزون</option>
+      <option value="variance">الانحرافات والرقابة</option>
+      <option value="planning">الموازنات والقرارات</option>
+      <option value="reports">التقارير والإقفال</option>
+    </select>
+    <button class="primary" onclick="window.print()">طباعة / حفظ PDF</button>
+    <button class="secondary" onclick="resetSearch()">إظهار الكل</button>
+  </div>
+
+  <div class="layout">
+    <aside class="panel sidebar">
+      <h2>محتويات الدليل</h2>
+      <nav>
+        <a href="#cost">1. تكلفة الإنتاج</a>
+        <a href="#stock">2. المخازن والمخزون</a>
+        <a href="#variance">3. الانحرافات والرقابة</a>
+        <a href="#planning">4. الموازنات والقرارات</a>
+        <a href="#reports">5. التقارير والإقفال</a>
+      </nav>
+      <p class="note">اضغط على أي قسم للانتقال إليه. استخدم البحث لتصفية المهام.</p>
+    </aside>
+
+    <div id="content">
+      <section class="section" id="cost" data-category="cost">
+        <div class="section-title">
+          <h2>القسم الأول: حساب تكلفة الإنتاج</h2>
+          <p>تحديد تكلفة الخامات والأجور والتشغيل والمنتجات المكتملة.</p>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">1</span>حساب تكلفة المواد الخام المباشرة</h3>
+          <p>تحديد تكلفة المواد التي تدخل مباشرة في تصنيع المنتج.</p>
+          <div class="example"><strong>مثال:</strong> المنتج يحتاج إلى 4 كجم خام، وسعر الكيلو 25 جنيهًا.<p class="formula">تكلفة الخامات = 4 × 25 = 100 جنيه للمنتج.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">2</span>حساب تكلفة الأجور المباشرة</h3>
+          <p>حساب أجور العمال المرتبطة مباشرة بتصنيع المنتج.</p>
+          <div class="example"><strong>مثال:</strong> تصنيع الوحدة يحتاج ساعتين، وتكلفة الساعة 40 جنيهًا.<p class="formula">تكلفة الأجور = 2 × 40 = 80 جنيهًا.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">3</span>حساب التكاليف الصناعية غير المباشرة</h3>
+          <p>تجميع تكاليف مثل كهرباء المصنع والصيانة وإهلاك الآلات ورواتب المشرفين، ثم تحميلها على المنتجات بأساس مناسب.</p>
+          <div class="example"><strong>مثال:</strong> التكاليف الصناعية 20,000 جنيه، وساعات التشغيل 1,000 ساعة.<p class="formula">معدل التحميل = 20,000 ÷ 1,000 = 20 جنيهًا لكل ساعة.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">4</span>حساب تكلفة الوحدة المنتجة</h3>
+          <p>جمع عناصر تكلفة الوحدة لتحديد تكلفة تصنيعها.</p>
+          <div class="example"><strong>مثال:</strong> خامات 100 جنيه + أجور 80 جنيهًا + تكاليف صناعية محملة 30 جنيهًا.<p class="formula">تكلفة الوحدة = 210 جنيهات.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">5</span>حساب تكلفة أمر الإنتاج</h3>
+          <p>تجميع التكاليف الخاصة بطلبية أو دفعة إنتاج مستقلة.</p>
+          <div class="example"><strong>مثال:</strong> أمر إنتاج 500 وحدة تكلفته الإجمالية 75,000 جنيه.<p class="formula">تكلفة الوحدة = 75,000 ÷ 500 = 150 جنيهًا.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">6</span>حساب تكلفة مراحل الإنتاج</h3>
+          <p>تجميع تكلفة كل مرحلة تصنيع عندما يمر المنتج بعدة مراحل متتابعة.</p>
+          <div class="example"><strong>مثال:</strong> تكلفة مرحلة الخلط 10,000 جنيه، والتعبئة 5,000 جنيه.<p class="formula">إجمالي تكلفة المرحلتين = 15,000 جنيه، مع مراعاة الوحدات المكتملة وتحت التشغيل.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">7</span>حساب تكلفة الإنتاج التام</h3>
+          <p>تحديد تكلفة الوحدات التي اكتمل تصنيعها خلال الفترة.</p>
+          <div class="example"><strong>مثال:</strong> تكلفة الإنتاج المتاحة 100,000 جنيه، وتكلفة تحت التشغيل آخر الفترة 15,000 جنيه، ولا يوجد تحت تشغيل أول الفترة أو تسويات أخرى.<p class="formula">الإنتاج التام = 100,000 − 15,000 = 85,000 جنيه.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">8</span>حساب تكلفة الإنتاج تحت التشغيل</h3>
+          <p>تحديد تكلفة المنتجات التي لم يكتمل تصنيعها في نهاية الفترة.</p>
+          <div class="example"><strong>مثال:</strong> الوحدة استهلكت كامل المواد، وأنجزت 50% من أعمال التحويل التي تكلفتها الكاملة 200 جنيه.<p class="formula">تكلفة التحويل المتراكمة = 50% × 200 = 100 جنيه، تضاف إليها تكلفة المواد المستهلكة.</p></div>
+        </div>
+        <div class="task" data-category="cost">
+          <h3><span class="number">9</span>حساب تكلفة المبيعات</h3>
+          <p>تحديد تكلفة المنتجات التي بيعت خلال الفترة، وليس فقط المنتجات التي تم تصنيعها.</p>
+          <div class="example"><strong>مثال:</strong> مخزون إنتاج تام أول الفترة 20,000 جنيه + الإنتاج التام 85,000 − مخزون آخر الفترة 25,000.<p class="formula">تكلفة المبيعات = 80,000 جنيه.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="stock" data-category="stock">
+        <div class="section-title">
+          <h2>القسم الثاني: المخازن ومراقبة المخزون</h2>
+          <p>متابعة حركة الخامات والكميات والتقييم والجرد وتوقيت الشراء.</p>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">10</span>مراجعة أذون استلام الخامات</h3>
+          <p>مطابقة الكميات المستلمة مع أمر الشراء والفاتورة ومحضر الفحص.</p>
+          <div class="example"><strong>مثال:</strong> أمر الشراء 1,000 كجم، لكن المستلم 950 كجم فقط. يتابع المحاسب فرق 50 كجم مع المخزن والمشتريات.</div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">11</span>مراجعة أذون صرف الخامات للإنتاج</h3>
+          <p>التأكد من أن الصرف مرتبط بأمر إنتاج معتمد، ومراجعة الكميات المصروفة.</p>
+          <div class="example"><strong>مثال:</strong> أمر الإنتاج يحتاج 200 كجم، لكن إذن الصرف 230 كجم. يراجع المحاسب سبب صرف 30 كجم إضافية.</div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">12</span>حساب رصيد المخزون</h3>
+          <p>متابعة رصيد أول المدة والوارد والمنصرف للوصول إلى الرصيد المتوقع.</p>
+          <div class="example"><strong>مثال:</strong> أول المدة 500 وحدة + وارد 300 − منصرف 250.<p class="formula">الرصيد المتوقع = 550 وحدة.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">13</span>حساب قيمة المخزون</h3>
+          <p>تحديد القيمة المالية للأصناف حسب طريقة التقييم المعتمدة.</p>
+          <div class="example"><strong>مثال:</strong> 100 وحدة، وتكلفة الوحدة 20 جنيهًا.<p class="formula">قيمة المخزون = 100 × 20 = 2,000 جنيه.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">14</span>تطبيق طرق تقييم المخزون</h3>
+          <p>استخدام طريقة مثل الوارد أولًا صادر أولًا (FIFO) أو المتوسط المرجح وفق السياسة المحاسبية المعتمدة.</p>
+          <div class="example"><strong>مثال:</strong> شراء 10 وحدات بسعر 10 جنيهات و10 وحدات بسعر 12 جنيهًا.<p class="formula">المتوسط المرجح = (100 + 120) ÷ 20 = 11 جنيهًا للوحدة.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">15</span>حساب نقطة إعادة الطلب</h3>
+          <p>تحديد مستوى المخزون الذي عنده ينبغي بدء طلب خامات جديدة.</p>
+          <div class="example"><strong>مثال:</strong> الاستهلاك اليومي 100 وحدة، ومدة التوريد 5 أيام، ومخزون الأمان 150 وحدة.<p class="formula">نقطة إعادة الطلب = (100 × 5) + 150 = 650 وحدة.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">16</span>تحديد مخزون الأمان</h3>
+          <p>الاحتفاظ بكمية احتياطية لمواجهة التأخير أو الزيادة غير المتوقعة في الاستهلاك.</p>
+          <div class="example"><strong>مثال:</strong> قررت الشركة الاحتفاظ بـ300 وحدة، ومتوسط الاستهلاك 100 وحدة يوميًا.<p class="formula">مخزون الأمان يغطي 3 أيام من الاستهلاك المعتاد.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">17</span>حساب الكمية الاقتصادية للطلب (EOQ)</h3>
+          <p>تقدير كمية الطلب التي توازن بين تكلفة إصدار الطلب وتكلفة الاحتفاظ بالمخزون، وفق افتراضات النموذج.</p>
+          <div class="example"><strong>مثال:</strong> الطلب السنوي D = 10,000 وحدة، وتكلفة الطلب S = 100 جنيه، وتكلفة الاحتفاظ السنوية H = 2 جنيه للوحدة.<p class="formula">EOQ = √(2DS ÷ H) = √(2 × 10,000 × 100 ÷ 2) ≈ 1,000 وحدة.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">18</span>تنفيذ ومراجعة الجرد الفعلي</h3>
+          <p>مقارنة الكميات الموجودة فعليًا بأرصدة النظام، والتحقيق في العجز أو الزيادة.</p>
+          <div class="example"><strong>مثال:</strong> رصيد النظام 1,000 وحدة، والجرد الفعلي 970 وحدة.<p class="formula">العجز الظاهري = 30 وحدة، ويجب التحقيق قبل اعتماد التسوية.</p></div>
+        </div>
+        <div class="task" data-category="stock">
+          <h3><span class="number">19</span>تحليل الأصناف الراكدة وبطيئة الحركة</h3>
+          <p>تحديد المخزون الذي لا يتحرك لفترات طويلة ودراسة أثره على رأس المال.</p>
+          <div class="example"><strong>مثال:</strong> خامات قيمتها 50,000 جنيه لم تتحرك منذ 8 أشهر. يراجع المحاسب إمكانية استخدامها أو الحاجة إلى تقييم انخفاض قيمتها.</div>
+        </div>
+      </section>
+
+      <section class="section" id="variance" data-category="variance">
+        <div class="section-title">
+          <h2>القسم الثالث: تحليل الانحرافات والرقابة</h2>
+          <p>مقارنة الفعلي بالمعياري، وتفسير الفروق واقتراح الحلول.</p>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">20</span>مقارنة التكلفة الفعلية بالمعيارية</h3>
+          <p>تحديد الفرق بين التكلفة المتوقعة والتكلفة التي حدثت فعلًا.</p>
+          <div class="example"><strong>مثال:</strong> التكلفة المعيارية 100 جنيه، والفعلية 110 جنيهات.<p class="formula">الانحراف = 10 جنيهات زيادة لكل وحدة.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">21</span>تحليل انحراف سعر الخامات</h3>
+          <p>قياس أثر اختلاف سعر الشراء الفعلي عن السعر المعياري.</p>
+          <div class="example"><strong>مثال:</strong> تم شراء 100 كجم بسعر فعلي 12 جنيهًا بدلًا من 10 جنيهات.<p class="formula">انحراف السعر = 100 × (12 − 10) = 200 جنيه غير ملائم.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">22</span>تحليل انحراف كمية الخامات</h3>
+          <p>قياس أثر استهلاك كمية أعلى أو أقل من المسموح به للإنتاج الفعلي.</p>
+          <div class="example"><strong>مثال:</strong> المسموح 100 كجم، والمستخدم 110 كجم، والسعر المعياري 10 جنيهات.<p class="formula">انحراف الكمية = (110 − 100) × 10 = 100 جنيه غير ملائم.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">23</span>تحليل انحراف معدل الأجور</h3>
+          <p>تحديد أثر اختلاف معدل الأجر الفعلي عن المعدل المعياري.</p>
+          <div class="example"><strong>مثال:</strong> 100 ساعة بمعدل فعلي 55 جنيهًا بدلًا من 50 جنيهًا.<p class="formula">انحراف المعدل = 100 × (55 − 50) = 500 جنيه غير ملائم.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">24</span>تحليل انحراف كفاءة العمل</h3>
+          <p>قياس أثر استخدام ساعات عمل أكثر أو أقل من الساعات المعيارية.</p>
+          <div class="example"><strong>مثال:</strong> الساعات المعيارية 100 ساعة، والفعلية 110 ساعات، ومعدل الأجر المعياري 50 جنيهًا.<p class="formula">انحراف الكفاءة = (110 − 100) × 50 = 500 جنيه غير ملائم.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">25</span>تحليل انحراف التكاليف الصناعية غير المباشرة</h3>
+          <p>مقارنة التكاليف الفعلية بالموازنة المناسبة للنشاط الفعلي، ثم تحديد أسباب الفرق.</p>
+          <div class="example"><strong>مثال:</strong> التكاليف الفعلية 25,000 جنيه والموازنة المرنة 23,000 جنيه.<p class="formula">الفرق = 2,000 جنيه زيادة تحتاج إلى تحليل.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">26</span>تحليل الهالك والتالف</h3>
+          <p>مقارنة الهالك الفعلي بالمسموح به وتحديد أسباب الفاقد غير الطبيعي.</p>
+          <div class="example"><strong>مثال:</strong> استهلاك الخام 1,000 كجم، والهالك المسموح 2%، والفعلي 4%.<p class="formula">الهالك الزائد عن الحد = 40 − 20 = 20 كجم.</p></div>
+        </div>
+        <div class="task" data-category="variance">
+          <h3><span class="number">27</span>تحليل أسباب زيادة تكلفة المنتج</h3>
+          <p>تحديد ما إذا كانت الزيادة ناتجة عن الأسعار أو الاستهلاك أو الأجور أو الطاقة أو انخفاض الإنتاجية.</p>
+          <div class="example"><strong>مثال:</strong> زادت تكلفة الوحدة من 200 إلى 230 جنيهًا. كشف التحليل أن 15 جنيهًا بسبب الخامات، و10 جنيهات بسبب الأجور، و5 جنيهات بسبب المصروفات الصناعية.</div>
+        </div>
+      </section>
+
+      <section class="section" id="planning" data-category="planning">
+        <div class="section-title">
+          <h2>القسم الرابع: الموازنات والتخطيط واتخاذ القرار</h2>
+          <p>التنبؤ بالتكاليف ودعم القرارات التشغيلية والإدارية.</p>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">28</span>إعداد الموازنة التقديرية للتكاليف</h3>
+          <p>تقدير تكاليف الإنتاج والخامات والأجور والمصروفات للفترة القادمة.</p>
+          <div class="example"><strong>مثال:</strong> الخطة إنتاج 1,000 وحدة، والتكلفة المتوقعة للوحدة 200 جنيه.<p class="formula">موازنة تكلفة الإنتاج = 200,000 جنيه.</p></div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">29</span>إعداد موازنة احتياجات المواد</h3>
+          <p>تحديد كمية الشراء اللازمة بعد احتساب احتياج الإنتاج والمخزون المتاح والمخزون المستهدف.</p>
+          <div class="example"><strong>مثال:</strong> احتياج الإنتاج 5,000 كجم، والمخزون المستهدف آخر الفترة 800 كجم، ومخزون أول الفترة 1,000 كجم.<p class="formula">المشتريات المطلوبة = 5,000 + 800 − 1,000 = 4,800 كجم.</p></div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">30</span>تحليل نقطة التعادل</h3>
+          <p>حساب حجم المبيعات الذي تتساوى عنده الإيرادات مع إجمالي التكاليف.</p>
+          <div class="example"><strong>مثال:</strong> التكاليف الثابتة 50,000 جنيه، وسعر البيع 100 جنيه، والتكلفة المتغيرة 60 جنيهًا.<p class="formula">نقطة التعادل = 50,000 ÷ (100 − 60) = 1,250 وحدة.</p></div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">31</span>حساب هامش المساهمة</h3>
+          <p>تحديد ما يتبقى من سعر البيع بعد خصم التكلفة المتغيرة.</p>
+          <div class="example"><strong>مثال:</strong> سعر البيع 100 جنيه والتكلفة المتغيرة 60 جنيهًا.<p class="formula">هامش المساهمة = 40 جنيهًا للوحدة.</p></div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">32</span>تحليل ربحية المنتجات</h3>
+          <p>مقارنة مساهمة المنتجات في تغطية التكاليف الثابتة وتحقيق الربح.</p>
+          <div class="example"><strong>مثال:</strong> المنتج أ يحقق هامش مساهمة 40 جنيهًا للوحدة، والمنتج ب يحقق 25 جنيهًا. يجب أيضًا مراعاة الطلب والطاقة الإنتاجية والتكاليف الأخرى قبل اتخاذ القرار.</div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">33</span>دراسة قرار التصنيع أو الشراء</h3>
+          <p>مقارنة التكاليف ذات الصلة بتصنيع جزء داخليًا مع تكلفة شرائه من مورد.</p>
+          <div class="example"><strong>مثال:</strong> تكلفة التصنيع المتغيرة 30 جنيهًا للوحدة، وسعر الشراء 35 جنيهًا.<p class="formula">التصنيع يوفر 5 جنيهات للوحدة قبل مراعاة التكاليف الثابتة القابلة للتجنب والجودة والطاقة المتاحة.</p></div>
+        </div>
+        <div class="task" data-category="planning">
+          <h3><span class="number">34</span>دراسة قبول طلبية خاصة</h3>
+          <p>تقييم الطلبات الإضافية ذات السعر الخاص بناءً على التكلفة الإضافية والطاقة المتاحة.</p>
+          <div class="example"><strong>مثال:</strong> طلب 500 وحدة بسعر 80 جنيهًا، والتكلفة المتغيرة 60 جنيهًا، مع وجود طاقة عاطلة وعدم وجود تكاليف إضافية أخرى.<p class="formula">المساهمة الإضافية = 500 × 20 = 10,000 جنيه.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="reports" data-category="reports">
+        <div class="section-title">
+          <h2>القسم الخامس: التقارير والإقفال والتعاون مع الإدارات</h2>
+          <p>تجهيز المعلومات الشهرية، وضبط الأرصدة، وتقديم تقارير موثوقة للإدارة.</p>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">35</span>إعداد تقرير تكلفة الإنتاج الشهري</h3>
+          <p>عرض تكلفة الخامات والأجور والتكاليف الصناعية والإنتاج التام وتحت التشغيل.</p>
+          <div class="example"><strong>مثال:</strong> تقرير يوضح أن تكلفة الإنتاج الشهرية 500,000 جنيه، مع توزيع التكلفة على خطوط الإنتاج.</div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">36</span>إعداد تقرير تكلفة المبيعات وهامش الربح</h3>
+          <p>مقارنة إيرادات المبيعات بتكلفة المنتجات المباعة.</p>
+          <div class="example"><strong>مثال:</strong> المبيعات 800,000 جنيه وتكلفة المبيعات 520,000 جنيه.<p class="formula">مجمل الربح = 280,000 جنيه قبل المصروفات الأخرى.</p></div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">37</span>إقفال التكاليف في نهاية الشهر</h3>
+          <p>مراجعة أرصدة الخامات والإنتاج تحت التشغيل والإنتاج التام، والتأكد من اكتمال بيانات الفترة.</p>
+          <div class="example"><strong>مثال:</strong> اكتشف المحاسب أن فاتورة كهرباء المصنع بقيمة 10,000 جنيه تخص الشهر ولم تسجل؛ يتابع تسجيلها في الفترة الصحيحة.</div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">38</span>مراجعة مراكز التكلفة</h3>
+          <p>تجميع وتحميل المصروفات على الأقسام أو خطوط الإنتاج أو مراكز الخدمة بأساس مناسب.</p>
+          <div class="example"><strong>مثال:</strong> تكلفة صيانة مشتركة 12,000 جنيه تُوزع بين خطين وفق ساعات استخدام الصيانة المعتمدة.</div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">39</span>التنسيق مع الإنتاج والمخازن والمشتريات</h3>
+          <p>مطابقة بيانات الإنتاج والصرف والهالك والأسعار والكميات مع الإدارات المعنية.</p>
+          <div class="example"><strong>مثال:</strong> المخزن يثبت صرف 200 كجم، وسجل الإنتاج يظهر استهلاك 220 كجم. يتابع المحاسب فرق 20 كجم قبل اعتماد التقرير.</div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">40</span>دعم المراجعة الداخلية والخارجية</h3>
+          <p>تجهيز مستندات التكلفة والمخزون وطرق التقييم وأسس تحميل المصروفات للمراجعين.</p>
+          <div class="example"><strong>مثال:</strong> يطلب المراجع إثبات قيمة مخزون الخامات؛ يقدم المحاسب تقرير الكميات وتكلفة الأصناف ونتائج الجرد والمستندات المؤيدة.</div>
+        </div>
+        <div class="task" data-category="reports">
+          <h3><span class="number">41</span>استخدام Excel والأنظمة المحاسبية وERP</h3>
+          <p>استخراج وتحليل بيانات التكاليف ومراجعة سلامة النتائج في البرامج المستخدمة بالشركة.</p>
+          <div class="example"><strong>مثال:</strong> يستخدم المحاسب Pivot Table لتلخيص تكلفة الخامات حسب الصنف والشهر وخط الإنتاج، ثم يطابق الإجماليات مع النظام.</div>
+        </div>
+      </section>
+
+      <div id="empty" class="panel empty">لا توجد نتائج مطابقة. جرّب كلمة بحث أخرى.</div>
+
+      <section class="panel" style="padding:18px;margin-top:20px">
+        <h2 style="margin-top:0">نصائح للبدء في مجال محاسبة التكاليف</h2>
+        <ul>
+          <li>افهم دورة الخامات من الشراء والاستلام إلى الصرف والإنتاج.</li>
+          <li>تعلّم حساب تكلفة الوحدة وأمر الإنتاج ومراحل التصنيع.</li>
+          <li>تدرّب على تحليل انحرافات الأسعار والكميات والأجور.</li>
+          <li>أتقن Excel وتعلّم أساسيات أنظمة ERP.</li>
+          <li>اربط كل رقم بالمستند الذي يثبته، ولا تعتمد التسويات دون مراجعة.</li>
+        </ul>
+        <p class="note">ملاحظة: تختلف مسؤوليات محاسب التكاليف حسب طبيعة المصنع وحجمه ونظامه المحاسبي. الأمثلة تعليمية ومبسطة، وقد تحتاج الحسابات الفعلية إلى تفاصيل إضافية.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer>
+  دليل محاسب التكاليف — مرجع تعليمي للتدريب والمراجعة
+</footer>
+
+<script>
+const searchInput = document.getElementById('search');
+const categorySelect = document.getElementById('category');
+const tasks = [...document.querySelectorAll('.task')];
+const sections = [...document.querySelectorAll('.section')];
+const emptyMessage = document.getElementById('empty');
+
+function filterTasks() {
+  const query = searchInput.value.trim().toLocaleLowerCase('ar');
+  const category = categorySelect.value;
+  let visibleCount = 0;
+
+  tasks.forEach(task => {
+    const text = task.innerText.toLocaleLowerCase('ar');
+    const matchesText = text.includes(query);
+    const matchesCategory = category === 'all' ||
+      task.dataset.category === category;
+    const visible = matchesText && matchesCategory;
+
+    task.style.display = visible ? '' : 'none';
+    if (visible) visibleCount++;
+  });
+
+  sections.forEach(section => {
+    const hasVisibleTask = [...section.querySelectorAll('.task')]
+      .some(task => task.style.display !== 'none');
+    section.style.display = hasVisibleTask ? '' : 'none';
+  });
+
+  emptyMessage.style.display = visibleCount ? 'none' : 'block';
+}
+
+function resetSearch() {
+  searchInput.value = '';
+  categorySelect.value = 'all';
+  filterTasks();
+}
+
+searchInput.addEventListener('input', filterTasks);
+categorySelect.addEventListener('change', filterTasks);
+</script>
+</body>
+</html>
